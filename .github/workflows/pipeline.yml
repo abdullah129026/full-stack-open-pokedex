@@ -1,4 +1,4 @@
-name: Lint
+name: Pipeline
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  lint_job:
+  pipeline_job:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,3 +17,7 @@ jobs:
         run: npm install
       - name: Lint
         run: npm run eslint
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: npm test
