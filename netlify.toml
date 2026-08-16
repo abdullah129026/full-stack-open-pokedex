@@ -2,6 +2,9 @@
   command = "npm run build"
   publish = "dist"
 
+[functions]
+  directory = "netlify/functions"
+
 [build.environment]
   NODE_VERSION = "20"
   PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1"
@@ -10,4 +13,10 @@
 [[redirects]]
   from = "/*"
   to = "/index.html"
+  status = 200
+
+# Expose the health check endpoint through a Netlify Function
+[[redirects]]
+  from = "/health"
+  to = "/.netlify/functions/health"
   status = 200
